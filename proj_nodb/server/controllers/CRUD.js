@@ -23,7 +23,7 @@ module.exports = {
 
   deleteNote: (req, res) => {
     let {id} = req.params;
-    notesArr = notesArr.filter((note) => {note.id !== +id})
+    notesArr = notesArr.filter((note) => note.id !== +id)
     res.status(200).send(notesArr)
   },
 
@@ -32,12 +32,13 @@ module.exports = {
     let {text, title} = req.body;
     let foundIndex = notesArr.findIndex((message) => message.id === +id);
     let note = notesArr[foundIndex];
-    // console.log (note)
+
 
     notesArr[foundIndex] = {
-      id,
+      id: +id,
       text: text || note.text,
       title: title || note.title,
     }
+    res.status(200).send(notesArr);
   }
 }
