@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import NotepadMain from './notepadMain';
+import NotepadMain from './components/notepadMain';
 
 function App() {
   return (

@@ -3,18 +3,23 @@ let notesArr = [
     id: 1,
     text: 'This is a sample note ^-^',
     title: 'Sample Note'
+  },
+  {
+    id: 2,
+    text: 'This is a test',
+    title: 'Test Note'
   }
 ]
 
-let id = 2
+let id = 3
 
 
 module.exports = {
   newNote: (req, res) => {
     let {text, title} = req.body;
     notesArr.push({text, title, id,});
-    res.status(200).send(notesArr)
-    id++
+    id++;
+    res.status(200).send(notesArr);
   },
 
   getNotes: (req, res) => {
