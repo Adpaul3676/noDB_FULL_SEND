@@ -8,7 +8,6 @@ class NotepadColumn extends Component {
       filteredNotesArray: [],
       userInput: '',
       showFilter: false,
-      buttonText: 'Search'
     }
   }
 
@@ -26,14 +25,6 @@ class NotepadColumn extends Component {
     this.setState({filteredNotesArray: filtered})
     this.setState({userInput: ''})
   }
-
-  toggleText() {
-    if (this.state.showFilter === false) {
-      this.setState({buttonText: 'Search'})
-    } else if (this.state.showFilter === true) {
-      this.setState({buttonText: 'Back'})
-    }
-  } 
 
   render () {
     let column = this.props.notesArray.map((e) => {
@@ -56,8 +47,7 @@ class NotepadColumn extends Component {
       <section>
         {/* This next part (the search bar) could be a separate component */}
         <input value={this.state.userInput} onChange={(e) => this.handleChange(e.target.value)}></input> 
-        <button onClick={() => this.toggleText()} onClick={() => this.filterColumn(this.state.userInput)}>{this.state.buttonText}</button>
-        <button>New Note</button>
+        <button onClick={() => this.filterColumn(this.state.userInput)}>{this.state.showFilter ? 'Back' : 'Search'}</button>
         {/* It ends here */}
         <div>
           {column}

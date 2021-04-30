@@ -20,6 +20,7 @@ module.exports = {
     notesArr.push({text, title, id,});
     id++;
     res.status(200).send(notesArr);
+    // console.log(text, title)
   },
 
   getNotes: (req, res) => {
