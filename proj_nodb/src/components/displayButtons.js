@@ -8,37 +8,46 @@ class DisplayButtons extends Component {
       textInput: '',
       titleInput: '',
     }
+    this.callFunctions = this.callFunctions.bind (this)
+    this.editInitializeFunction = this.editInitializeFunction.bind (this)
+    this.handleTextChange = this.handleTextChange.bind (this)
+    this.handleTitleChange = this.handleTitleChange.bind (this)
   }
   
   callFunctions () {
-    this.props.editNote(this.props.selectedNote.id);
+    this.props.editNote(this.state.textInput, this.state.titleInput, this.props.selectedNote[0].id);
     this.props.toggleEdit();
+    this.setState({textInput: '', titleInput: ''})
   }
   
-  editFunction (){
+  editInitializeFunction (){
     this.props.toggleEdit();
-    
+    this.setState({textInput: this.props.selectedNote[0].text, titleInput: this.props.selectedNote[0].title})
   }
 
   handleTitleChange (input) {
-
+    this.setState({titleInput: input})
   }
 
   handleTextChange (input) {
-
+    this.setState({textInput: input})
   }
   
   render () {
+
     let inputFields = <section>
-      <input value={this.state.titleInput} onChange={(e) => this.handleTextChange(e.target.value)} className='editTitleField'></input>
-      <input value={this.state.textInput} onChange={(e) => this.handleTitleChange(e.target.value)} className='editTextField'></input>
+      <input placeholder='Updated Title Here' value={this.state.titleInput} onChange={(e) => this.handleTitleChange(e.target.value)} className='editTitleField'></input>
+      <input placeholder='Updated Text Here' value={this.state.textInput} onChange={(e) => this.handleTextChange(e.target.value)} className='editTextField'></input>
     </section>
+
     let saveButton = <button onClick={() => this.callFunctions()} className='saveButton'>Save Changes</button>
-    let editButton = <button onClick={() => this.editFunction()} className='editButton'>Edit Note</button>
+
+    let editButton = <button onClick={() => this.editInitializeFunction()} className='editButton'>Edit Note</button>
+
     return (
       <section className='buttonBox'>
         {this.props.toggleEditValue ? saveButton : editButton}
-        {inputFields}
+        {this.props.toggleEditValue ? inputFields : null}
         {/* {deleteButton} */}
       </section>
     )

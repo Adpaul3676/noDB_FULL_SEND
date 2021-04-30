@@ -17,6 +17,7 @@ class NotepadMain extends Component {
     this.createMode = this.createMode.bind (this)
     this.createNote = this.createNote.bind (this)
     this.toggleEdit = this.toggleEdit.bind (this)
+    this.editNote = this.editNote.bind (this)
   }
   
   componentDidMount () {
@@ -51,7 +52,7 @@ class NotepadMain extends Component {
   editNote (text, title, id) {
     axios.put(`/api/notes/${id}`, {text, title})
     .then((res) => {
-      this.setState({notesArray: res.data})
+      this.setState({notesArray: res.data, selectedNote: [{text, title, id}]})
     })
   }
 
