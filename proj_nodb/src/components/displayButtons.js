@@ -4,10 +4,7 @@ class DisplayButtons extends Component {
   constructor (props) {
     super (props)
 
-    this.state = {
-      textInput: '',
-      titleInput: '',
-    }
+    this.state = {}
     // this.callFunctions = this.callFunctions.bind (this)
     this.editInitializeFunction = this.editInitializeFunction.bind (this)
     // this.handleTextChange = this.handleTextChange.bind (this)

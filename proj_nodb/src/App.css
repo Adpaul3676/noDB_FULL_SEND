@@ -127,17 +127,22 @@ display: flex;
   height: 100px;
   border: none;
   border-radius: 25px;
+
+  transition-duration: 2s;
+  -webkit-transition-property: color, background; 
+  -webkit-transition-duration: 1s, 1s; 
+  -webkit-transition-timing-function: linear, ease-in;
 }
 
 .specificButtons:hover {
-color:#000; 
-background:rgb(250, 241, 164); 
-padding:5px; 
+  color:#000; 
+  background:rgb(250, 241, 164); 
+  padding:5px; 
 
-transition-duration: 2s;
--webkit-transition-property:color, background; 
--webkit-transition-duration: 1s, 1s; 
--webkit-transition-timing-function: linear, ease-in;
+  transition-duration: 2s;
+  -webkit-transition-property: color, background; 
+  -webkit-transition-duration: 1s, 1s; 
+  -webkit-transition-timing-function: linear, ease-in;
 }
 
 .buttonBox {
