@@ -26,10 +26,13 @@ display: flex;
 
 .titleText {
   display: flex;
-  justify-content: center;
-  width: 225px;
+  justify-content: flex-start;
+  width: 70vw;
   font-size: 1.8em;
+  position: relative;
+  left: 30px;
   /* font-weight: bold; */
+  
 }
 
 .separator1 {

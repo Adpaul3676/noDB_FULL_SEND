@@ -54,6 +54,7 @@ class NotepadDisplay extends Component {
 
     let newNoteButton = <button onClick={() => this.props.createMode()}>New Note</button>
     let createButton = <button onClick={() => this.callAll(this.state.titleInput, this.state.textInput)}>Create</button>
+    let backButton = <button onClick={() => this.props.createMode()}>Back</button>
 
     return (
       <section className='displayFrame'>
@@ -64,6 +65,7 @@ class NotepadDisplay extends Component {
         <section className='buttonBox'>
           {/* <div className='bottomButtonSpacing'> */}
             {this.props.toggleCreate ? createButton : newNoteButton}
+            {this.props.toggleCreate ? backButton : null}
             <DisplayButtons
             editNote = {this.props.editNote}
             deleteNote = {this.props.deleteNote}
