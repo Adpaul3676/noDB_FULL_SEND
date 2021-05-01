@@ -8,8 +8,14 @@ class NotepadDisplay extends Component {
     this.state = {
       titleInput: '',
       textInput: '',
+      textInput2: '',
+      titleInput2: '',
     }
-    this.callAll = this.callAll.bind (this);  
+    this.callAll = this.callAll.bind (this); 
+    this.handleTextChange2 = this.handleTextChange2.bind (this) 
+    this.handleTitleChange2 = this.handleTitleChange2.bind (this)
+    this.callFunctions = this.callFunctions.bind (this)
+    this.initializeEdit = this.initializeEdit.bind (this) 
   }
 
   handleTitleChange (input) {
@@ -20,10 +26,29 @@ class NotepadDisplay extends Component {
     this.setState ({textInput: input})
   } 
 
+  handleTitleChange2 (input) {
+    this.setState({titleInput2: input})
+  }
+
+  handleTextChange2 (input) {
+    this.setState({textInput2: input})
+  }
+  
+
   callAll (title, text) {
     this.props.newNote(title, text);
     this.props.createMode();
     this.setState({titleInput: '', textInput: ''})
+  }
+
+  initializeEdit () {
+    this.setState({textInput2: this.props.selectedNote[0].text, titleInput2: this.props.selectedNote[0].title})
+  }
+
+  callFunctions () {
+    this.props.editNote(this.state.textInput2, this.state.titleInput2, this.props.selectedNote[0].id);
+    this.props.toggleEdit();
+    this.setState({textInput2: '', titleInput2: ''})
   }
 
   render () {
@@ -45,6 +70,7 @@ class NotepadDisplay extends Component {
             <header className='noteTitle'>
               <h1 className='titleText'>{e.title}</h1>
             </header>
+            
             <div className='separator1'></div>
             <div className='noteBody'>{e.text}</div>
           </section>
@@ -56,11 +82,22 @@ class NotepadDisplay extends Component {
     let createButton = <button onClick={() => this.callAll(this.state.titleInput, this.state.textInput)}>Create</button>
     let backButton = <button onClick={() => this.props.createMode()}>Back</button>
 
+    let inputFields = <section>
+      <header className='noteTitle'>
+        <input placeholder='Updated Title Here' value={this.state.titleInput2} onChange={(e) => this.handleTitleChange2(e.target.value)} className='createTitleField'></input>
+      </header>
+      <div className='separator1'></div>
+      <section className='noteBody'>
+        <input placeholder='Updated Text Here' value={this.state.textInput2} onChange={(e) => this.handleTextChange2(e.target.value)} className='createTextField'></input>
+      </section>
+    </section>
+
     return (
       <section className='displayFrame'>
         <div className='viewPort'>
-        {displayNormal}
-        {this.props.toggleCreate ? displayNew : null}
+          {displayNormal}
+          {this.props.toggleCreate ? displayNew : null}
+          {this.props.toggleEditValue ? inputFields : null} 
         </div>
         <section className='buttonBox'>
           {/* <div className='bottomButtonSpacing'> */}
@@ -72,6 +109,8 @@ class NotepadDisplay extends Component {
             selectedNote = {this.props.selectedNote}
             toggleEdit = {this.props.toggleEdit}
             toggleEditValue = {this.props.toggleEditValue}
+            initializeEdit = {this.initializeEdit}
+            callFunctions = {this.callFunctions}
             />
           {/* </div> */}
         </section>
