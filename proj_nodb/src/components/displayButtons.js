@@ -57,7 +57,7 @@ class DisplayButtons extends Component {
     }}>Delete Note</button>
 
     return (
-      <section className='buttonBox'>
+      <section>
         {this.props.toggleEditValue ? saveButton : editButton}
         {this.props.toggleEditValue ? inputFields : null}
         {deleteButton}

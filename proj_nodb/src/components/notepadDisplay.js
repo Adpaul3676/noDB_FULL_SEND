@@ -29,10 +29,11 @@ class NotepadDisplay extends Component {
   render () {
     let displayNew =
         <section>
-          <header>
+          <header className='noteTitle'>
             <input value={this.state.titleInput} className='createTitleField' placeholder='Note title here' onChange={(e) => this.handleTitleChange(e.target.value)}></input>
           </header>
-          <section>
+          <div className='separator1'></div>
+          <section className='noteBody'>
             <input onChange={(e) => this.handleTextChange(e.target.value)} value={this.state.textInput} className ='createTextField' placeholder='Note text here'></input>
           </section>
         </section>
@@ -41,7 +42,10 @@ class NotepadDisplay extends Component {
       if (this.props.toggleCreate === false && this.props.toggleEditValue === false) {
         return (
           <section key={e.id}>
-            <header className='noteTitle'>{e.title}</header>
+            <header className='noteTitle'>
+              <h1 className='titleText'>{e.title}</h1>
+            </header>
+            <div className='separator1'></div>
             <div className='noteBody'>{e.text}</div>
           </section>
         )
@@ -53,16 +57,22 @@ class NotepadDisplay extends Component {
 
     return (
       <section className='displayFrame'>
+        <div className='viewPort'>
         {displayNormal}
         {this.props.toggleCreate ? displayNew : null}
-        {this.props.toggleCreate ? createButton : newNoteButton}
-        <DisplayButtons
-        editNote = {this.props.editNote}
-        deleteNote = {this.props.deleteNote}
-        selectedNote = {this.props.selectedNote}
-        toggleEdit = {this.props.toggleEdit}
-        toggleEditValue = {this.props.toggleEditValue}
-        />
+        </div>
+        <section className='buttonBox'>
+          {/* <div className='bottomButtonSpacing'> */}
+            {this.props.toggleCreate ? createButton : newNoteButton}
+            <DisplayButtons
+            editNote = {this.props.editNote}
+            deleteNote = {this.props.deleteNote}
+            selectedNote = {this.props.selectedNote}
+            toggleEdit = {this.props.toggleEdit}
+            toggleEditValue = {this.props.toggleEditValue}
+            />
+          {/* </div> */}
+        </section>
       </section>
     )
   }

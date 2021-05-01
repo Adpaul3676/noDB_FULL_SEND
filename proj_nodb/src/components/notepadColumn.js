@@ -30,7 +30,7 @@ class NotepadColumn extends Component {
     let column = this.props.notesArray.map((e) => {
       if (this.state.showFilter === false) {
         return (
-        <button key={e.id} onClick={() => this.props.selectNote(e)}>
+        <button    className='specificButtons' key={e.id} onClick={() => this.props.selectNote(e)}>
         {e.title}
         </button>
       )}
@@ -38,7 +38,7 @@ class NotepadColumn extends Component {
     let filteredColumn = this.state.filteredNotesArray.map((e) => {
       if (this.state.showFilter === true) {
         return (
-        <button key={e.id} onClick={() => this.props.selectNote(e)}>
+        <button className='specificButtons' key={e.id} onClick={() => this.props.selectNote(e)}>
         {e.title}
         </button>
       )}
@@ -46,13 +46,13 @@ class NotepadColumn extends Component {
     return (
       <section className='columnFrame'>
         {/* This next part (the search bar) could be a separate component */}
-        <header>
           <h1 className='columnTitle'>Notes</h1>
-        </header>
-        <input className='searchInputField' value={this.state.userInput} onChange={(e) => this.handleChange(e.target.value)}></input> 
-        <button onClick={() => this.filterColumn(this.state.userInput)}>{this.state.showFilter ? 'Back' : 'Search'}</button>
+          <section className='searchFrame'>
+            <input className='searchInputField' value={this.state.userInput} onChange={(e) => this.handleChange(e.target.value)}></input> 
+            <button onClick={() => this.filterColumn(this.state.userInput)}>{this.state.showFilter ? 'Back' : 'Search'}</button>
+          </section>
         {/* It ends here */}
-        <div>
+        <div className='columnButtons'>
           {column}
           {filteredColumn}
         </div>
