@@ -47,6 +47,8 @@ display: flex;
   /* background-color: brown; */
   box-sizing: border-box;
   padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .createTitleField {
