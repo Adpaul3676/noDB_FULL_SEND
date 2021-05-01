@@ -21,8 +21,12 @@ class DisplayButtons extends Component {
   }
   
   editInitializeFunction (){
-    this.props.toggleEdit();
-    this.setState({textInput: this.props.selectedNote[0].text, titleInput: this.props.selectedNote[0].title})
+    if (this.props.selectedNote.length !== 0) {
+      this.props.toggleEdit();
+      this.setState({textInput: this.props.selectedNote[0].text, titleInput: this.props.selectedNote[0].title})
+    } else {
+      alert ('You need to select a note to edit!')
+    }
   }
 
   handleTitleChange (input) {
@@ -44,11 +48,19 @@ class DisplayButtons extends Component {
 
     let editButton = <button onClick={() => this.editInitializeFunction()} className='editButton'>Edit Note</button>
 
+    let deleteButton = <button onClick={() => {
+      if (this.props.selectedNote.length !== 0) {
+       this.props.deleteNote(this.props.selectedNote[0].id)
+      } else {
+        alert ('You need to select a note to delete!')
+      }
+    }}>Delete Note</button>
+
     return (
       <section className='buttonBox'>
         {this.props.toggleEditValue ? saveButton : editButton}
         {this.props.toggleEditValue ? inputFields : null}
-        {/* {deleteButton} */}
+        {deleteButton}
       </section>
     )
   }

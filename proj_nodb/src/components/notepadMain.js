@@ -18,6 +18,7 @@ class NotepadMain extends Component {
     this.createNote = this.createNote.bind (this)
     this.toggleEdit = this.toggleEdit.bind (this)
     this.editNote = this.editNote.bind (this)
+    this.deleteNote = this.deleteNote.bind (this)
   }
   
   componentDidMount () {
@@ -43,17 +44,21 @@ class NotepadMain extends Component {
   }
 
   deleteNote (id) {
-    axios.delete(`api/notes/${id}`)
-    .then((res) => {
-      this.setState({notesArray: res.data})
-    })
+    if (id !== undefined) {
+      axios.delete(`api/notes/${id}`)
+      .then((res) => {
+        this.setState({notesArray: res.data, selectedNote: []})
+      })
+    }
   }
 
   editNote (text, title, id) {
-    axios.put(`/api/notes/${id}`, {text, title})
-    .then((res) => {
-      this.setState({notesArray: res.data, selectedNote: [{text, title, id}]})
-    })
+    if (text !== undefined) {
+      axios.put(`/api/notes/${id}`, {text, title})
+      .then((res) => {
+        this.setState({notesArray: res.data, selectedNote: [{text, title, id}]})
+      })
+    }
   }
 
   createMode () {
@@ -66,7 +71,7 @@ class NotepadMain extends Component {
 
   render() {
     return (
-      <section>
+      <section className='App'>
         <NotepadDisplay 
           selectedNote = {this.state.selectedNote}
           toggleCreate = {this.state.toggleCreate}
@@ -76,6 +81,7 @@ class NotepadMain extends Component {
           editNote = {this.editNote}
           toggleEdit = {this.toggleEdit}
           toggleEditValue = {this.state.toggleEdit}
+          selectNote = {this.selectNote}
         />
         <NotepadColumn 
           notesArray = {this.state.notesArray}

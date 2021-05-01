@@ -44,9 +44,12 @@ class NotepadColumn extends Component {
       )}
     })
     return (
-      <section>
+      <section className='columnFrame'>
         {/* This next part (the search bar) could be a separate component */}
-        <input value={this.state.userInput} onChange={(e) => this.handleChange(e.target.value)}></input> 
+        <header>
+          <h1 className='columnTitle'>Notes</h1>
+        </header>
+        <input className='searchInputField' value={this.state.userInput} onChange={(e) => this.handleChange(e.target.value)}></input> 
         <button onClick={() => this.filterColumn(this.state.userInput)}>{this.state.showFilter ? 'Back' : 'Search'}</button>
         {/* It ends here */}
         <div>
