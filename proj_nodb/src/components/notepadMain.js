@@ -27,7 +27,7 @@ class NotepadMain extends Component {
         this.setState({notesArray: res.data})
         console.log(res.data)
       }
-    )
+    ).catch ((err) => console.log(err))
   }
 
   toggleEdit () {
@@ -39,7 +39,7 @@ class NotepadMain extends Component {
       .then((res) => {
         this.setState({notesArray: res.data})
       }
-    )
+    ).catch ((err) => console.log(err))
     console.log (this.state.notesArray)
   }
 
@@ -48,7 +48,7 @@ class NotepadMain extends Component {
       axios.delete(`api/notes/${id}`)
       .then((res) => {
         this.setState({notesArray: res.data, selectedNote: []})
-      })
+      }).catch ((err) => console.log(err))
     }
   }
 
@@ -57,7 +57,7 @@ class NotepadMain extends Component {
       axios.put(`/api/notes/${id}`, {text, title})
       .then((res) => {
         this.setState({notesArray: res.data, selectedNote: [{text, title, id}]})
-      })
+      }).catch ((err) => console.log(err))
     }
   }
 

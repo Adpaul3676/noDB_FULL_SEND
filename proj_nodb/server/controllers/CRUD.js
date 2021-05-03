@@ -17,34 +17,46 @@ let id = 3
 module.exports = {
   newNote: (req, res) => {
     let {text, title} = req.body;
-    notesArr.push({text, title, id,});
-    id++;
-    res.status(200).send(notesArr);
-    // console.log(text, title)
+      if (text !== undefined && title !== undefined) {
+      notesArr.push({text, title, id,});
+      id++;
+      res.status(200).send(notesArr);
+      // console.log(text, title)
+    } else {
+      res.status(500).send('Undefined variables')
+    }
   },
 
   getNotes: (req, res) => {
-    res.status(200).send(notesArr)
+    res.status(200).send(notesArr);
   },
 
   deleteNote: (req, res) => {
     let {id} = req.params;
-    notesArr = notesArr.filter((note) => note.id !== +id)
-    res.status(200).send(notesArr)
+      if (id !== undefined) {
+      notesArr = notesArr.filter((note) => note.id !== +id)
+      res.status(200).send(notesArr);
+    } else {
+      res.status(500).send('Undefined variables')
+    }
   },
 
   updateNote: (req,res) => {
     let {id} = req.params;
     let {text, title} = req.body;
-    let foundIndex = notesArr.findIndex((message) => message.id === +id);
-    let note = notesArr[foundIndex];
+    if (id !== undefined && title !== undefined && text !==undefined) {
+      let foundIndex = notesArr.findIndex((message) => message.id === +id);
+      let note = notesArr[foundIndex];
 
 
-    notesArr[foundIndex] = {
-      id: +id,
-      text: text || note.text,
-      title: title || note.title,
+      notesArr[foundIndex] = {
+        id: +id,
+        text: text || note.text,
+        title: title || note.title,
+      }
+      res.status(200).send(notesArr);
+    } else {
+      res.status(500).send('Undefined variables')
     }
-    res.status(200).send(notesArr);
   }
 }
