@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, {Component} from 'react';
 import NotepadDisplay from './notepadDisplay.js'
 import NotepadColumn from './notepadColumn.js'
+import reactDom from 'react-dom';
 
 class NotepadMain extends Component {
   constructor () {
@@ -38,9 +39,10 @@ class NotepadMain extends Component {
     axios.post('/api/notes', {text, title})
       .then((res) => {
         this.setState({notesArray: res.data})
+        this.setState({selectedNote: [this.state.notesArray[this.state.notesArray.length - 1]]})
       }
     ).catch ((err) => console.log(err))
-    console.log (this.state.notesArray)
+    // console.log (this.state.notesArray)
   }
 
   deleteNote (id) {
