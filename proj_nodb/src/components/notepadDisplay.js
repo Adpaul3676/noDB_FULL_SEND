@@ -42,7 +42,7 @@ class NotepadDisplay extends Component {
   }
 
   initializeEdit () {
-    if (this.props.createMode !== true) {
+    if (this.props.toggleCreate === false) {
       this.setState({textInput2: this.props.selectedNote[0].text, titleInput2: this.props.selectedNote[0].title})
     } else {
       alert('You need to finish this note first!')
@@ -115,6 +115,7 @@ class NotepadDisplay extends Component {
             toggleEditValue = {this.props.toggleEditValue}
             initializeEdit = {this.initializeEdit}
             callFunctions = {this.callFunctions}
+            toggleCreate = {this.props.toggleCreate}
             />
           {/* </section> */}
         </section>

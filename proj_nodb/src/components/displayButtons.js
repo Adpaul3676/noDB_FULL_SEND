@@ -12,7 +12,7 @@ class DisplayButtons extends Component {
   }
   
   editInitializeFunction (){
-    if (this.props.selectedNote.length !== 0) {
+    if (this.props.selectedNote.length !== 0 && this.props.toggleCreate === false) {
       this.props.toggleEdit();
       this.props.initializeEdit()
     } else {
