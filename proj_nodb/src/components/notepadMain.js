@@ -64,7 +64,11 @@ class NotepadMain extends Component {
   }
 
   createMode () {
-    this.setState({toggleCreate: !this.state.toggleCreate})
+    if (this.state.toggleEdit === false) {
+      this.setState({toggleCreate: !this.state.toggleCreate})
+    } else {
+      alert('You must save your changes first!')
+    }
   }
 
   selectNote (obj) {

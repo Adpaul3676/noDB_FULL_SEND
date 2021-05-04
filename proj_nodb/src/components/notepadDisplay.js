@@ -42,7 +42,11 @@ class NotepadDisplay extends Component {
   }
 
   initializeEdit () {
-    this.setState({textInput2: this.props.selectedNote[0].text, titleInput2: this.props.selectedNote[0].title})
+    if (this.props.createMode !== true) {
+      this.setState({textInput2: this.props.selectedNote[0].text, titleInput2: this.props.selectedNote[0].title})
+    } else {
+      alert('You need to finish this note first!')
+    }
   }
 
   callFunctions () {
