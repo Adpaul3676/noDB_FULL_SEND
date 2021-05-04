@@ -133,7 +133,7 @@ display: flex;
 
 .specificButtons:hover {
   color:#000; 
-  background:rgb(250, 245, 200); 
+  background:rgb(248, 245, 213); 
   padding:5px; 
 
   transition-duration: .5s;
@@ -174,7 +174,7 @@ display: flex;
 
 .bottomButton:hover {
   color:#000; 
-  background:rgb(155, 152, 144); 
+  background:rgb(197, 193, 184); 
   padding:5px; 
 
   transition-duration: .5s;
@@ -196,7 +196,7 @@ display: flex;
 
   .searchButton:hover {
     color:#000; 
-    background:rgb(155, 152, 144); 
+    background:rgb(197, 193, 184); 
     padding:5px; 
   
     transition-duration: .5s;
