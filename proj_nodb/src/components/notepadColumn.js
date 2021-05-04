@@ -19,7 +19,7 @@ class NotepadColumn extends Component {
     this.setState({showFilter: !this.state.showFilter})
     let filtered = this.props.notesArray.filter((e) => {
       if (e.title.includes(input) === true || e.text.includes(input) === true) {
-        return (e)
+        return (e)  
       }
     })
     this.setState({filteredNotesArray: filtered})
@@ -49,7 +49,7 @@ class NotepadColumn extends Component {
           <h1 className='columnTitle'>Notes</h1>
           <section className='searchFrame'>
             <input className='searchInputField' value={this.state.userInput} onChange={(e) => this.handleChange(e.target.value)}></input> 
-            <button onClick={() => this.filterColumn(this.state.userInput)}>{this.state.showFilter ? 'Back' : 'Search'}</button>
+            <button className='searchButton' onClick={() => this.filterColumn(this.state.userInput)}>{this.state.showFilter ? 'Back' : 'Search'}</button>
           </section>
         {/* It ends here */}
         <div className='columnButtons'>

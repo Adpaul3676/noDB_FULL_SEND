@@ -22,11 +22,11 @@ class DisplayButtons extends Component {
 
   render () {
 
-    let saveButton = <button onClick={() => this.props.callFunctions()} className='saveButton'>Save Changes</button>
+    let saveButton = <button onClick={() => this.props.callFunctions()} className='bottomButton'>Save Changes</button>
 
-    let editButton = <button onClick={() => this.editInitializeFunction()} className='editButton'>Edit Note</button>
+    let editButton = <button onClick={() => this.editInitializeFunction()} className='bottomButton'>Edit Note</button>
 
-    let deleteButton = <button onClick={() => {
+    let deleteButton = <button className='bottomButton' onClick={() => {
       if (this.props.selectedNote.length !== 0) {
        this.props.deleteNote(this.props.selectedNote[0].id)
       } else {

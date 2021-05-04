@@ -109,15 +109,10 @@ display: flex;
   left: 20px;
 }
 
-.searchInputField {
-  /* width: 95%; */
-
-}
-
 .columnButtons {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   height: 500px;
   width: 90%;
   /* background-color: black; */
@@ -127,21 +122,23 @@ display: flex;
   height: 100px;
   border: none;
   border-radius: 25px;
+  margin-top: 20px;
 
-  transition-duration: 2s;
+
+  transition-duration: .5s;
   -webkit-transition-property: color, background; 
-  -webkit-transition-duration: 1s, 1s; 
+  -webkit-transition-duration: .5s, .5s; 
   -webkit-transition-timing-function: linear, ease-in;
 }
 
 .specificButtons:hover {
   color:#000; 
-  background:rgb(255, 249, 192); 
+  background:rgb(250, 245, 200); 
   padding:5px; 
 
-  transition-duration: 2s;
+  transition-duration: .5s;
   -webkit-transition-property: color, background; 
-  -webkit-transition-duration: 1s, 1s; 
+  -webkit-transition-duration: .5s, .5s; 
   -webkit-transition-timing-function: linear, ease-in;
 }
 
@@ -149,12 +146,61 @@ display: flex;
   display: flex;
   width: 70vw;
   justify-content: flex-end;
+  /* background-color: aliceblue; */
 }
 
 .bottomButtonSpacing {
   width: 200px;
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   justify-content: space-between;
   background-color: black;
 }
+
+.bottomButton {
+  border: none;
+  margin-left: 10px;
+  width: 150px;
+  height: 30px;
+  position: relative;
+  bottom: 10px;
+  border-radius: 10px;
+
+  transition-duration: .5s;
+    -webkit-transition-property: color, background; 
+    -webkit-transition-duration: .5s, .5s; 
+    -webkit-transition-timing-function: linear, ease-in;
+}
+
+.bottomButton:hover {
+  color:#000; 
+  background:rgb(155, 152, 144); 
+  padding:5px; 
+
+  transition-duration: .5s;
+  -webkit-transition-property: color, background; 
+  -webkit-transition-duration: .5s, .5s; 
+  -webkit-transition-timing-function: linear, ease-in;
+}
+
+  .searchButton {
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    
+    transition-duration: .5s;
+    -webkit-transition-property: color, background; 
+    -webkit-transition-duration: .5s, .5s; 
+    -webkit-transition-timing-function: linear, ease-in;
+  }
+
+  .searchButton:hover {
+    color:#000; 
+    background:rgb(155, 152, 144); 
+    padding:5px; 
+  
+    transition-duration: .5s;
+    -webkit-transition-property: color, background; 
+    -webkit-transition-duration: .5s, .5s; 
+    -webkit-transition-timing-function: linear, ease-in;
+  }

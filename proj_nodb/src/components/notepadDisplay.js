@@ -78,9 +78,9 @@ class NotepadDisplay extends Component {
       } 
     })
 
-    let newNoteButton = <button onClick={() => this.props.createMode()}>New Note</button>
-    let createButton = <button onClick={() => this.callAll(this.state.titleInput, this.state.textInput)}>Create</button>
-    let backButton = <button onClick={() => this.props.createMode()}>Back</button>
+    let newNoteButton = <button className='bottomButton' onClick={() => this.props.createMode()}>New Note</button>
+    let createButton = <button className='bottomButton' onClick={() => this.callAll(this.state.titleInput, this.state.textInput)}>Create</button>
+    let backButton = <button className='bottomButton' onClick={() => this.props.createMode()}>Back</button>
 
     let inputFields = <section>
       <header className='noteTitle'>
@@ -100,8 +100,8 @@ class NotepadDisplay extends Component {
           {this.props.toggleEditValue ? inputFields : null} 
         </div>
         <section className='buttonBox'>
-          {/* <div className='bottomButtonSpacing'> */}
-            {this.props.toggleCreate ? createButton : newNoteButton}
+          {/* <section className='buttonBottomSpacing'> */}
+          {this.props.toggleCreate ? createButton : newNoteButton}
             {this.props.toggleCreate ? backButton : null}
             <DisplayButtons
             editNote = {this.props.editNote}
@@ -112,7 +112,7 @@ class NotepadDisplay extends Component {
             initializeEdit = {this.initializeEdit}
             callFunctions = {this.callFunctions}
             />
-          {/* </div> */}
+          {/* </section> */}
         </section>
       </section>
     )
